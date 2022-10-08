@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>2379b351-19bd-42fd-87be-806dfd300b60</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Company.Graphql.Application\Company.Graphql.Application.csproj" />
+    <ProjectReference Include="..\Blocks\Company.Graphql.Blocks.Bootstrap\Company.Graphql.Blocks.Bootstrap.csproj" />
+    <ProjectReference Include="..\Blocks\Company.Graphql.Blocks.Common.Mapping.Configuration\Company.Graphql.Blocks.Common.Mapping.Configuration.csproj" />
+    <ProjectReference Include="..\Infrastructure\Company.Graphql.Infrastructure.Db.Mssql\Company.Graphql.Infrastructure.Db.Mssql.csproj" />
+    <ProjectReference Include="..\Infrastructure\Company.Graphql.Infrastructure.Db.Postgres\Company.Graphql.Infrastructure.Db.Postgres.csproj" />
+    <ProjectReference Include="..\Presentation\Company.Graphql.Presentation.Api\Company.Graphql.Presentation.Grapql.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GraphQL.Server.Ui.Voyager" Version="7.1.1" />
+  </ItemGroup>
+  
+</Project>

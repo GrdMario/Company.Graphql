@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Blocks\Company.Graphql.Blocks.Application.Configuration\Company.Graphql.Blocks.Application.Configuration.csproj" />
+    <ProjectReference Include="..\..\Blocks\Company.Graphql.Blocks.Application.Core\Company.Graphql.Blocks.Application.Core.csproj" />
+    <ProjectReference Include="..\..\Blocks\Company.Graphql.Blocks.Common.Extensions\Company.Graphql.Blocks.Common.Extensions.csproj" />
+    <ProjectReference Include="..\..\Blocks\Company.Graphql.Blocks.Common.Mapping.Core\Company.Graphql.Blocks.Common.Mapping.Core.csproj" />
+    <ProjectReference Include="..\Company.Graphql.Application.Contracts\Company.Graphql.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BlogFeatures\Commands\" />
+    <Folder Include="UserFeatures\Commands\" />
+  </ItemGroup>
+
+</Project>
