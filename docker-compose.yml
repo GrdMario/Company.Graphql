@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+  company-graphql-mssql:
+    image: "mcr.microsoft.com/mssql/server"
+    container_name: company-graphql-mssql
+    volumes:
+      - ./data:/var/opt/mssql/data
+      - ./log:/var/opt/mssql/log
+    environment:
+      SA_PASSWORD: "yourStrong(!)Password"
+      ACCEPT_EULA: "Y"
+    restart: unless-stopped    
+    ports:
+      - "1433:1433" 
+  company-graphql-postgres:
+    image: "postgres:15.1-alpine"
+    container_name: company-graphql-postgres
+    volumes: 
+      - ./var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    restart: unless-stopped    
+    ports:
+      - "5432:5432" 

@@ -1,6 +1,7 @@
-﻿namespace Company.Graphql.Infrastructure.Db.Mssql
+﻿namespace Company.Graphql.Infrastructure.Db.Postgres
 {
     using Company.Graphql.Infrastructure.Db.Postgres.Internal;
+    using Microsoft.AspNetCore.Builder;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
 
@@ -16,6 +17,25 @@
             DatabaseDependencyInjection.AddRepositories<PostgresDbContext>(services);
 
             return services;
+        }
+
+        public static IApplicationBuilder MigratePostgresDb(this IApplicationBuilder builder)
+        {
+            using var scope = builder.ApplicationServices.CreateScope();
+
+            using var dbContext = scope.ServiceProvider.GetService<PostgresDbContext>();
+
+            if (dbContext is null)
+            {
+                throw new ArgumentNullException(nameof(dbContext));
+            }
+
+            if (dbContext.Database.GetPendingMigrations().Count() > 0)
+            {
+                dbContext.Database.Migrate();
+            }
+
+            return builder;
         }
     }
 

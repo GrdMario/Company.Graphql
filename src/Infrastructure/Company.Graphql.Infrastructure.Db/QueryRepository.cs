@@ -3,6 +3,7 @@
     using Company.Graphql.Application.Contracts.Db.Mssql;
     using Microsoft.EntityFrameworkCore;
     using System.Linq;
+    using System.Linq.Expressions;
 
     public class QueryRepository<TDbContext, TEntity> : IQueryRepository<TEntity>
         where TEntity : class
@@ -16,5 +17,8 @@
         }
 
         public IQueryable<TEntity> Entities => this.dbContext.Set<TEntity>().AsNoTracking();
+
+        public IQueryable<TEntity> Include(Expression<Func<TEntity, object>> includes)
+            => this.dbContext.Set<TEntity>().Include(includes).AsNoTracking();
     }
 }

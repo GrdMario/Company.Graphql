@@ -3,17 +3,19 @@
     using Company.Graphql.Domain;
     using HotChocolate.Data.Filters;
 
-    internal sealed class BlogFilterType : FilterInputType<Blog>
+    internal sealed class PostFilterType: FilterInputType<Post>
     {
-        protected override void Configure(IFilterInputTypeDescriptor<Blog> descriptor)
+        protected override void Configure(IFilterInputTypeDescriptor<Post> descriptor)
         {
             descriptor.BindFieldsExplicitly();
 
             descriptor.Field(f => f.Id);
-            descriptor.Field(f => f.UserId);
+            descriptor.Field(f => f.BlogId);
             descriptor.Field(f => f.Title);
+            descriptor.Field(f => f.Url);
+            descriptor.Field(f => f.Slug);
             descriptor.Field(f => f.Description);
-            descriptor.Field(f => f.Posts);
+            descriptor.Field(f => f.Content);
         }
     }
 }

@@ -10,7 +10,7 @@
     [ExtendObjectType(OperationTypeNames.Query)]
     internal class UsersQuery
     {
-        [UsePaging]
+        [UseOffsetPaging]
         [UseProjection]
         [UseFiltering(typeof(UserFilterType))]
         [UseSorting]

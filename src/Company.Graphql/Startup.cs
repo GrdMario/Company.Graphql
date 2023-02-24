@@ -5,6 +5,7 @@
     using Company.Graphql.Blocks.Common.Serilog.Configuration;
     using Company.Graphql.Blocks.Presentation.Api.Configuration;
     using Company.Graphql.Infrastructure.Db.Mssql;
+    using Company.Graphql.Infrastructure.Db.Postgres;
     using Company.Graphql.Presentation.Grapql;
 
     public sealed class Startup
@@ -48,6 +49,9 @@
             {
                 app.UseHsts();
             }
+
+            app.MigrateMssqlDatabase();
+            app.MigratePostgresDb();
 
             app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 

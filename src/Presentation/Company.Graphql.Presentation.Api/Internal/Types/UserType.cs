@@ -8,14 +8,20 @@
         protected override void Configure(IObjectTypeDescriptor<User> descriptor)
         {
             descriptor.BindFieldsExplicitly();
-            descriptor.Field(u => u.Id);
-            descriptor.Field(u => u.UserName);
-            descriptor.Field(u => u.Address);
-            descriptor.Field(u => u.Email);
 
-            descriptor.Field("blogs")
-                .UsePaging()
-                .ResolveWith<UserResolvers>(action => action.GetBlogsAsync(default!, default!, default!));
+            descriptor.Field(f => f.Id);
+            descriptor.Field(f => f.UserName);
+            descriptor.Field(f => f.Email);
+            descriptor.Field(f => f.Address);
+            descriptor.Field(f => f.ProfilePicture);
+
+            descriptor
+                .Field("blogs")
+                .ResolveWith<UserResolvers>(action => action.GetBlogsAsync(default!, default!, default!))
+                .UseOffsetPaging()
+                .UseProjection()
+                .UseFiltering()
+                .UseSorting();
         }
     }
 }

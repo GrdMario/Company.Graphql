@@ -10,7 +10,7 @@
     [ExtendObjectType(OperationTypeNames.Query)]
     internal sealed class BlogsQuery
     {
-        [UsePaging]
+        [UseOffsetPaging]
         [UseProjection]
         [UseFiltering(typeof(BlogFilterType))]
         [UseSorting]
